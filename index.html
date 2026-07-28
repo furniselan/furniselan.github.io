@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Furniselan Warehouse Stock</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#f5f5f5;padding:20px}
+.container{max-width:900px;margin:auto;background:#fff;padding:25px;border-radius:12px;box-shadow:0 0 15px rgba(0,0,0,.15)}
+.logo{text-align:center;margin:15px 0 25px}
+.logo img{height:90px;max-width:100%}
+.search{display:flex;gap:10px;margin-bottom:25px}
+.search input{flex:1;padding:14px;font-size:18px;border:1px solid #ccc;border-radius:8px;text-transform:uppercase;outline:none}
+.search input:focus{border-color:#009688}
+.search button{padding:14px 25px;font-size:17px;background:#009688;color:#fff;border:none;border-radius:8px;cursor:pointer}
+.search button:hover{background:#00796b}
+.search button:disabled{opacity:.7;cursor:wait}
+#result{margin-top:20px}
+.product{display:flex;gap:25px;flex-wrap:wrap}
+.product img{width:280px;max-height:300px;object-fit:contain;border-radius:10px;border:1px solid #ddd}
+.info{flex:1;min-width:280px}
+table{width:100%;border-collapse:collapse;margin-top:10px}
+td{border:1px solid #ddd;padding:10px;font-size:16px}
+td:first-child{font-weight:bold;background:#f7f7f7;width:180px}
+.stock{margin-top:20px}
+.stock h3{margin-bottom:10px}
+.total td{background:#009688;color:#fff;font-size:20px;font-weight:bold}
+.error{color:red;font-size:22px;text-align:center;padding:30px}
+.loading{font-size:20px;text-align:center;padding:30px}
+@media(max-width:700px){
+ body{padding:10px}
+ .container{padding:15px}
+ .search{flex-direction:column}
+ .product{flex-direction:column}
+ .product img{width:100%}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="logo">
+    <img src="https://www.furniselan.com/cdn/shop/files/furniselanin.svg?v=1723913440" alt="Furniselan">
+  </div>
+
+  <div class="search">
+    <input type="text" id="sku" placeholder="Enter SKU" autocomplete="off">
+    <button id="searchButton" onclick="searchProduct()">Search</button>
+  </div>
+
+  <div id="result"></div>
+</div>
+
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbyV1GSfjscgoaParhG4Fh3oD-Pz1attitVT8MkpYe0RyNKd1OiNEFUpa0ol7TGKU-WX/exec";
+
+function escapeHtml(value){
+  return String(value ?? "")
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+}
+
+function escapeAttribute(value){
+  return escapeHtml(value);
+}
+
+function searchProduct(){
+  const input = document.getElementById("sku");
+  const result = document.getElementById("result");
+  const button = document.getElementById("searchButton");
+  const sku = input.value.trim().toUpperCase();
+
+  if(!sku){ alert("Enter SKU"); input.focus(); return; }
+
+  result.innerHTML = "<div class='loading'>Searching...</div>";
+  button.disabled = true;
+  button.textContent = "Searching...";
+
+  const callbackName = "furniselanCallback_" + Date.now();
+  const script = document.createElement("script");
+
+  const cleanup = () => {
+    button.disabled = false;
+    button.textContent = "Search";
+    try { delete window[callbackName]; } catch(e) {}
+    if (script.parentNode) script.parentNode.removeChild(script);
+  };
+
+  window[callbackName] = function(data){
+    try { showResult(data); } finally { cleanup(); }
+  };
+
+  script.src = API_URL + "?sku=" + encodeURIComponent(sku) +
+               "&callback=" + encodeURIComponent(callbackName);
+
+  script.onerror = function(){
+    result.innerHTML = "<div class='error'>Unable to connect to server.</div>";
+    cleanup();
+  };
+
+  document.body.appendChild(script);
+}
+
+function showResult(data){
+  const result = document.getElementById("result");
+
+  if(!data){
+    result.innerHTML = "<div class='error'>No response from server.</div>";
+    return;
+  }
+  if(data.error){
+    result.innerHTML = "<div class='error'>" + escapeHtml(data.error) + "</div>";
+    return;
+  }
+  if(!data.found){
+    result.innerHTML = "<div class='error'>Product Not Found</div>";
+    return;
+  }
+
+  result.innerHTML = `
+  <div class="product">
+    <div>
+      <img src="${escapeAttribute(data.image)}" alt="Product Image" onerror="this.style.display='none'">
+    </div>
+    <div class="info">
+      <table>
+        <tr><td>SKU</td><td>${escapeHtml(data.sku)}</td></tr>
+        <tr><td>Name</td><td>${escapeHtml(data.name)}</td></tr>
+        <tr><td>Size</td><td>${escapeHtml(data.size)}</td></tr>
+        <tr><td>Color</td><td>${escapeHtml(data.color)}</td></tr>
+        <tr><td>Material</td><td>${escapeHtml(data.material)}</td></tr>
+        <tr><td>Selling Price</td><td>₹ ${escapeHtml(data.selling)}</td></tr>
+      </table>
+      <div class="stock">
+        <h3>Warehouse Stock</h3>
+        <table>
+          <tr><td>Warehouse-9</td><td>${Number(data.warehouse9)||0}</td></tr>
+          <tr><td>Mumbai</td><td>${Number(data.mumbai)||0}</td></tr>
+          <tr><td>Bangalore</td><td>${Number(data.bangalore)||0}</td></tr>
+          <tr class="total"><td>Total Stock</td><td>${Number(data.totalStock)||0}</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>`;
+}
+
+document.getElementById("sku").addEventListener("keydown", function(event){
+  if(event.key === "Enter"){
+    event.preventDefault();
+    searchProduct();
+  }
+});
+</script>
+</body>
+</html>
