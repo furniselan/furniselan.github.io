@@ -64,13 +64,6 @@ body{
   max-width:100%;
 }
 
-.page-title{
-  text-align:center;
-  font-size:28px;
-  margin-bottom:7px;
-  color:#222;
-}
-
 .page-description{
   text-align:center;
   color:#666;
@@ -207,10 +200,6 @@ td:first-child{
   .product img{
     width:100%;
   }
-
-  .page-title{
-    font-size:24px;
-  }
 }
 </style>
 
@@ -223,10 +212,8 @@ td:first-child{
   <div class="logo">
     <img
       src="https://www.furniselan.com/cdn/shop/files/furniselanin.svg?v=1723913440"
-      alt="Furniselan Stock">
+      alt="Furniselan">
   </div>
-
-  <h1 class="page-title">Furniselan Stock</h1>
 
   <p class="page-description">
     Search Furniselan product SKU and check Warehouse-9,
@@ -234,6 +221,7 @@ td:first-child{
   </p>
 
   <div class="search">
+
     <input
       type="text"
       id="sku"
@@ -245,6 +233,7 @@ td:first-child{
       onclick="searchProduct()">
       Search
     </button>
+
   </div>
 
   <div id="result"></div>
