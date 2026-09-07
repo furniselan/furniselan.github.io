@@ -7,28 +7,35 @@
 
 <title>Furniselan Stock | Warehouse Stock Search</title>
 
-<meta name="description"
-content="Furniselan Stock - Search Furniselan product SKU and check Warehouse-9, Mumbai, Bangalore and Factory No-6 stock availability.">
+<meta name="description" content="Furniselan Stock - Search Furniselan product SKU and check Warehouse-9, Mumbai and Bangalore warehouse stock availability.">
 
-<meta name="keywords"
-content="Furniselan Stock, Furniselan Warehouse Stock, Furniselan SKU Stock, Furniselan Inventory">
+<meta name="keywords" content="Furniselan Stock, furniselanstock, Furniselan Warehouse Stock, Furniselan SKU Stock, Furniselan Inventory">
 
 <meta name="robots" content="index, follow">
 
-<link rel="canonical"
-href="https://furniselan.github.io/">
+<link rel="canonical" href="https://furniselan.github.io/">
 
-<meta property="og:title"
-content="Furniselan Stock">
+<meta property="og:title" content="Furniselan Stock">
 
-<meta property="og:description"
-content="Search Furniselan product SKU and check Warehouse-9, Mumbai, Bangalore and Factory No-6 stock.">
+<meta property="og:description" content="Search Furniselan product SKU and check Warehouse-9, Mumbai and Bangalore warehouse stock.">
 
-<meta property="og:url"
-content="https://furniselan.github.io/">
+<meta property="og:url" content="https://furniselan.github.io/">
 
-<meta property="og:type"
-content="website">
+<meta property="og:type" content="website">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Furniselan Stock",
+  "alternateName": [
+    "furniselanstock",
+    "Furniselan Warehouse Stock"
+  ],
+  "url": "https://furniselan.github.io/"
+}
+</script>
 
 
 <style>
@@ -68,7 +75,7 @@ body{
 
   text-align:center;
 
-  margin:15px 0;
+  margin:15px 0 15px;
 
 }
 
@@ -158,11 +165,6 @@ body{
 
 }
 
-
-/* =========================
-   PRODUCT
-========================= */
-
 #result{
 
   margin-top:20px;
@@ -179,13 +181,13 @@ body{
 
 }
 
-.product-image{
+.product img{
 
   width:280px;
 
-  height:230px;
+  max-height:300px;
 
-  object-fit:cover;
+  object-fit:contain;
 
   border-radius:10px;
 
@@ -231,14 +233,9 @@ td:first-child{
 
 }
 
-
-/* =========================
-   WAREHOUSE
-========================= */
-
 .stock{
 
-  margin-top:18px;
+  margin-top:20px;
 
 }
 
@@ -246,45 +243,11 @@ td:first-child{
 
   margin-bottom:10px;
 
-  font-size:20px;
-
 }
-
-.stock td{
-
-  padding:10px;
-
-}
-
-
-/* =========================
-   STOCK NUMBER
-========================= */
-
-.stock-number{
-
-  color:#00a651;
-
-  font-weight:bold;
-
-}
-
-.stock-zero{
-
-  color:#e00000;
-
-  font-weight:bold;
-
-}
-
-
-/* =========================
-   TOTAL
-========================= */
 
 .total td{
 
-  background:#009e91;
+  background:#009688;
 
   color:#fff;
 
@@ -293,11 +256,6 @@ td:first-child{
   font-weight:bold;
 
 }
-
-
-/* =========================
-   ERROR
-========================= */
 
 .error{
 
@@ -321,11 +279,6 @@ td:first-child{
 
 }
 
-
-/* =========================
-   MOBILE
-========================= */
-
 @media(max-width:700px){
 
   body{
@@ -346,33 +299,15 @@ td:first-child{
 
   }
 
-  .search button{
-
-    width:100%;
-
-  }
-
   .product{
 
     flex-direction:column;
 
   }
 
-  .product-image{
+  .product img{
 
     width:100%;
-
-    height:auto;
-
-    max-height:300px;
-
-    object-fit:contain;
-
-  }
-
-  .info{
-
-    min-width:100%;
 
   }
 
@@ -385,11 +320,8 @@ td:first-child{
 
 <body>
 
-
 <div class="container">
 
-
-  <!-- LOGO -->
 
   <div class="logo">
 
@@ -400,17 +332,13 @@ td:first-child{
   </div>
 
 
-  <!-- DESCRIPTION -->
-
   <p class="page-description">
 
-    Search Furniselan product SKU and check
-    Warehouse-9, Mumbai, Bangalore and Factory No-6 stock availability.
+    Search Furniselan product SKU and check Warehouse-9,
+    Mumbai and Bangalore stock availability.
 
   </p>
 
-
-  <!-- SEARCH -->
 
   <div class="search">
 
@@ -431,8 +359,6 @@ td:first-child{
   </div>
 
 
-  <!-- RESULT -->
-
   <div id="result"></div>
 
 
@@ -442,17 +368,9 @@ td:first-child{
 <script>
 
 
-// ==================================================
-// NEW GOOGLE APPS SCRIPT URL
-// ==================================================
-
 const API_URL =
-"https://script.google.com/macros/s/AKfycbymi4BRA8DeG-7dxGFTBXx1kqI8ydXsokKwqqaXZKGVAAmK5Z9tDIk7wnOz0nOyWWtf/exec";
+"https://script.google.com/macros/s/AKfycbyV1GSfjscgoaParhG4Fh3oD-Pz1attitVT8MkpYe0RyNKd1OiNEFUpa0ol7TGKU-WX/exec";
 
-
-// ==================================================
-// ESCAPE HTML
-// ==================================================
 
 function escapeHtml(value){
 
@@ -478,10 +396,6 @@ function escapeAttribute(value){
 }
 
 
-// ==================================================
-// SEARCH
-// ==================================================
-
 function searchProduct(){
 
   const input =
@@ -495,9 +409,7 @@ function searchProduct(){
 
 
   const sku =
-    input.value
-      .trim()
-      .toUpperCase();
+    input.value.trim().toUpperCase();
 
 
   if(!sku){
@@ -517,13 +429,11 @@ function searchProduct(){
 
   button.disabled = true;
 
-  button.textContent =
-    "Searching...";
+  button.textContent = "Searching...";
 
 
   const callbackName =
-    "furniselanCallback_" +
-    Date.now();
+    "furniselanCallback_" + Date.now();
 
 
   const script =
@@ -534,8 +444,7 @@ function searchProduct(){
 
     button.disabled = false;
 
-    button.textContent =
-      "Search";
+    button.textContent = "Search";
 
 
     try{
@@ -549,8 +458,7 @@ function searchProduct(){
 
     if(script.parentNode){
 
-      script.parentNode
-        .removeChild(script);
+      script.parentNode.removeChild(script);
 
     }
 
@@ -599,10 +507,6 @@ function searchProduct(){
 }
 
 
-// ==================================================
-// SHOW RESULT
-// ==================================================
-
 function showResult(data){
 
   const result =
@@ -641,57 +545,22 @@ function showResult(data){
   }
 
 
-  // ==================================================
-  // STOCK VALUES
-  // ==================================================
-
-  const warehouse9 =
-    Number(data.warehouse9Stock) || 0;
-
-  const mumbai =
-    Number(data.mumbaiStock) || 0;
-
-  const bangalore =
-    Number(data.bangaloreStock) || 0;
-
-  const factory =
-    Number(data.factoryStock) || 0;
-
-  const total =
-    Number(data.totalStock) || 0;
-
-
-  // ==================================================
-  // RESULT HTML
-  // ==================================================
-
   result.innerHTML = `
 
   <div class="product">
 
 
-    <!-- IMAGE -->
-
     <div>
 
       <img
-
-        class="product-image"
-
         src="${escapeAttribute(data.image)}"
-
         alt="${escapeAttribute(
-          data.name ||
-          data.sku ||
-          "Furniselan Product"
+          data.name || data.sku || 'Furniselan Product'
         )}"
-
         onerror="this.style.display='none'">
 
     </div>
 
-
-    <!-- INFORMATION -->
 
     <div class="info">
 
@@ -726,12 +595,7 @@ function showResult(data){
           <td>Size</td>
 
           <td>
-            ${escapeHtml(data.w)}
-            ×
-            ${escapeHtml(data.d)}
-            ×
-            ${escapeHtml(data.h)}
-            inch
+            ${escapeHtml(data.size)}
           </td>
 
         </tr>
@@ -764,11 +628,7 @@ function showResult(data){
           <td>Selling Price</td>
 
           <td>
-            ₹ ${Number(data.selling || 0)
-              .toLocaleString("en-IN",{
-                minimumFractionDigits:2,
-                maximumFractionDigits:2
-              })}
+            ₹ ${escapeHtml(data.selling)}
           </td>
 
         </tr>
@@ -776,10 +636,6 @@ function showResult(data){
 
       </table>
 
-
-      <!-- =========================
-           WAREHOUSE STOCK
-      ========================== -->
 
       <div class="stock">
 
@@ -798,14 +654,8 @@ function showResult(data){
               Warehouse-9
             </td>
 
-            <td class="${
-              warehouse9 > 0
-              ? "stock-number"
-              : "stock-zero"
-            }">
-
-              ${warehouse9}
-
+            <td>
+              ${Number(data.warehouse9) || 0}
             </td>
 
           </tr>
@@ -817,14 +667,8 @@ function showResult(data){
               Mumbai
             </td>
 
-            <td class="${
-              mumbai > 0
-              ? "stock-number"
-              : "stock-zero"
-            }">
-
-              ${mumbai}
-
+            <td>
+              ${Number(data.mumbai) || 0}
             </td>
 
           </tr>
@@ -836,33 +680,8 @@ function showResult(data){
               Bangalore
             </td>
 
-            <td class="${
-              bangalore > 0
-              ? "stock-number"
-              : "stock-zero"
-            }">
-
-              ${bangalore}
-
-            </td>
-
-          </tr>
-
-
-          <tr>
-
             <td>
-              Factory No-6
-            </td>
-
-            <td class="${
-              factory > 0
-              ? "stock-number"
-              : "stock-zero"
-            }">
-
-              ${factory}
-
+              ${Number(data.bangalore) || 0}
             </td>
 
           </tr>
@@ -875,7 +694,7 @@ function showResult(data){
             </td>
 
             <td>
-              ${total}
+              ${Number(data.totalStock) || 0}
             </td>
 
           </tr>
@@ -897,30 +716,25 @@ function showResult(data){
 }
 
 
-// ==================================================
-// ENTER KEY
-// ==================================================
-
 document
-  .getElementById("sku")
-  .addEventListener(
-    "keydown",
-    function(event){
+.getElementById("sku")
+.addEventListener(
+  "keydown",
+  function(event){
 
-      if(event.key === "Enter"){
+    if(event.key === "Enter"){
 
-        event.preventDefault();
+      event.preventDefault();
 
-        searchProduct();
-
-      }
+      searchProduct();
 
     }
-  );
+
+  }
+);
 
 </script>
 
 
 </body>
-
 </html>
