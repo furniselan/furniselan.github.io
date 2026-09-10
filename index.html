@@ -6,407 +6,357 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-      content="width=device-width, initial-scale=1">
+content="width=device-width, initial-scale=1.0">
 
-<title>Furniselan Stock | Warehouse Stock Search</title>
-
-<meta name="description"
-content="Furniselan Stock - Search Furniselan product SKU and check Warehouse-9, Mumbai, Bangalore and Factory No-6 stock availability.">
-
-<meta name="keywords"
-content="Furniselan Stock, Furniselan Warehouse Stock, Furniselan SKU Stock, Furniselan Inventory">
-
-<meta name="robots"
-content="index, follow">
-
-<link rel="canonical"
-      href="https://furniselan.github.io/">
-
-
-<meta property="og:title"
-      content="Furniselan Stock">
-
-<meta property="og:description"
-content="Search Furniselan product SKU and check Warehouse-9, Mumbai, Bangalore and Factory No-6 stock.">
-
-<meta property="og:url"
-      content="https://furniselan.github.io/">
-
-<meta property="og:type"
-      content="website">
+<title>Furniselan Stock Search</title>
 
 
 <style>
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial,sans-serif;
+* {
+  box-sizing: border-box;
 }
 
 
-body{
+body {
 
-  background:#f5f5f5;
+  margin: 0;
 
-  padding:20px;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background: #f3f3f3;
+
+  color: #111;
 
 }
 
 
-.container{
+.container {
 
-  max-width:900px;
+  width: 92%;
 
-  margin:auto;
+  max-width: 1050px;
 
-  background:#fff;
+  margin: 0 auto;
 
-  padding:25px;
+  background: white;
 
-  border-radius:12px;
+  min-height: 100vh;
+
+  padding: 0 28px 28px;
 
   box-shadow:
-    0 0 15px rgba(0,0,0,.15);
+    0 0 18px rgba(0,0,0,0.12);
 
 }
 
 
-.logo{
+.logo {
 
-  text-align:center;
+  text-align: center;
 
-  margin:15px 0;
+  padding-top: 0;
 
-}
-
-
-.logo img{
-
-  height:90px;
-
-  max-width:100%;
+  margin-bottom: 20px;
 
 }
 
 
-.page-description{
+.logo img {
 
-  text-align:center;
+  width: 180px;
 
-  color:#666;
-
-  margin-bottom:25px;
-
-  line-height:1.5;
+  max-width: 60%;
 
 }
 
 
-.search{
+.description {
 
-  display:flex;
+  text-align: center;
 
-  gap:10px;
+  font-size: 18px;
 
-  margin-bottom:25px;
+  color: #555;
 
-}
-
-
-.search input{
-
-  flex:1;
-
-  padding:14px;
-
-  font-size:18px;
-
-  border:1px solid #009688;
-
-  border-radius:8px;
-
-  text-transform:uppercase;
-
-  outline:none;
+  margin-bottom: 30px;
 
 }
 
 
-.search input:focus{
+.search-box {
 
-  border:2px solid #009688;
+  display: flex;
 
-}
+  gap: 12px;
 
-
-.search button{
-
-  padding:14px 25px;
-
-  font-size:17px;
-
-  background:#009688;
-
-  color:#fff;
-
-  border:none;
-
-  border-radius:8px;
-
-  cursor:pointer;
-
-  font-weight:bold;
+  margin-bottom: 28px;
 
 }
 
 
-.search button:hover{
+.search-box input {
 
-  background:#00796b;
+  flex: 1;
 
-}
+  height: 56px;
 
+  border: 1px solid #009f96;
 
-.search button:disabled{
+  border-radius: 10px;
 
-  opacity:.7;
+  padding: 0 16px;
 
-  cursor:wait;
+  font-size: 20px;
 
-}
-
-
-/* =========================
-   RESULT
-========================= */
-
-#result{
-
-  margin-top:20px;
+  outline: none;
 
 }
 
 
-/* =========================
-   PRODUCT
-========================= */
+.search-box button {
 
-.product{
+  width: 120px;
 
-  display:flex;
+  border: none;
 
-  gap:25px;
+  border-radius: 10px;
 
-  flex-wrap:wrap;
+  background: #009d94;
 
-}
+  color: white;
 
+  font-size: 18px;
 
-.product-image{
+  font-weight: bold;
 
-  width:280px;
-
-  height:230px;
-
-  object-fit:cover;
-
-  border-radius:10px;
-
-  border:1px solid #ddd;
+  cursor: pointer;
 
 }
 
 
-.info{
+.search-box button:hover {
 
-  flex:1;
-
-  min-width:280px;
+  background: #008b83;
 
 }
 
 
-table{
+.product-area {
 
-  width:100%;
+  display: grid;
 
-  border-collapse:collapse;
+  grid-template-columns: 315px 1fr;
 
-  margin-top:10px;
+  gap: 30px;
 
-}
-
-
-td{
-
-  border:1px solid #ddd;
-
-  padding:10px;
-
-  font-size:16px;
+  align-items: start;
 
 }
 
 
-td:first-child{
+.product-image {
 
-  font-weight:bold;
+  width: 315px;
 
-  background:#f7f7f7;
+  height: 260px;
 
-  width:180px;
+  object-fit: cover;
 
-}
+  border-radius: 12px;
 
-
-/* =========================
-   WAREHOUSE STOCK
-========================= */
-
-.stock{
-
-  margin-top:20px;
+  display: block;
 
 }
 
 
-.stock h3{
+.info-table {
 
-  margin-bottom:10px;
+  width: 100%;
 
-  font-size:20px;
+  border-collapse: collapse;
 
-}
-
-
-.stock-number{
-
-  color:#00a651;
-
-  font-weight:bold;
+  font-size: 18px;
 
 }
 
 
-.stock-zero{
+.info-table td {
 
-  color:#e00000;
+  border: 1px solid #ddd;
 
-  font-weight:bold;
-
-}
-
-
-/* =========================
-   TOTAL
-========================= */
-
-.total td{
-
-  background:#009688;
-
-  color:#fff;
-
-  font-size:20px;
-
-  font-weight:bold;
+  padding: 12px;
 
 }
 
 
-/* =========================
-   ERROR
-========================= */
+.info-table td:first-child {
 
-.error{
+  width: 205px;
 
-  color:red;
+  font-weight: bold;
 
-  font-size:22px;
-
-  text-align:center;
-
-  padding:30px;
+  background: #fafafa;
 
 }
 
 
-.loading{
+.stock-title {
 
-  font-size:20px;
+  font-size: 24px;
 
-  text-align:center;
+  font-weight: bold;
 
-  padding:30px;
+  margin:
 
-  color:#009688;
+    20px 0 10px;
 
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+.stock-table {
 
-@media(max-width:700px){
+  width: 100%;
 
-  body{
+  border-collapse: collapse;
 
-    padding:10px;
+  font-size: 18px;
+
+}
+
+
+.stock-table td {
+
+  border: 1px solid #ddd;
+
+  padding: 12px;
+
+}
+
+
+.stock-table td:first-child {
+
+  width: 205px;
+
+  font-weight: bold;
+
+  background: #fafafa;
+
+}
+
+
+.stock-number {
+
+  color: #00a63c;
+
+  font-weight: bold;
+
+}
+
+
+.stock-detail {
+
+  color: #333;
+
+  font-weight: normal;
+
+  margin-left: 8px;
+
+}
+
+
+.total-row td {
+
+  background: #009f96 !important;
+
+  color: white;
+
+  font-size: 23px;
+
+  font-weight: bold;
+
+}
+
+
+.error {
+
+  text-align: center;
+
+  color: #d00000;
+
+  font-size: 18px;
+
+  padding: 20px;
+
+}
+
+
+.loading {
+
+  text-align: center;
+
+  font-size: 18px;
+
+  padding: 20px;
+
+}
+
+
+@media (max-width: 750px) {
+
+  .container {
+
+    width: 100%;
+
+    padding: 0 15px 20px;
 
   }
 
 
-  .container{
+  .product-area {
 
-    padding:15px;
-
-  }
-
-
-  .search{
-
-    flex-direction:column;
+    grid-template-columns: 1fr;
 
   }
 
 
-  .search button{
+  .product-image {
 
-    width:100%;
+    width: 100%;
 
-  }
+    max-width: 315px;
 
-
-  .product{
-
-    flex-direction:column;
+    margin: auto;
 
   }
 
 
-  .product-image{
+  .search-box {
 
-    width:100%;
-
-    height:auto;
-
-    max-height:300px;
-
-    object-fit:contain;
+    gap: 8px;
 
   }
 
 
-  .info{
+  .search-box button {
 
-    min-width:100%;
+    width: 100px;
+
+  }
+
+
+  .info-table td:first-child,
+  .stock-table td:first-child {
+
+    width: 38%;
 
   }
 
 }
+
 
 </style>
 
@@ -419,59 +369,39 @@ td:first-child{
 <div class="container">
 
 
-  <!-- LOGO -->
-
   <div class="logo">
 
     <img
-
-      src="https://www.furniselan.com/cdn/shop/files/furniselanin.svg?v=1723913440"
-
+      src="https://furniselan.com/wp-content/uploads/2025/01/furniselan-logo.png"
       alt="Furniselan">
 
   </div>
 
 
-  <!-- DESCRIPTION -->
-
-  <p class="page-description">
+  <div class="description">
 
     Search Furniselan product SKU and check
     Warehouse-9, Mumbai, Bangalore and Factory No-6
     stock availability.
 
-  </p>
+  </div>
 
 
-  <!-- SEARCH -->
-
-  <div class="search">
+  <div class="search-box">
 
     <input
-
       type="text"
-
-      id="sku"
-
+      id="skuInput"
       placeholder="Enter SKU"
-
+      value="VAP-2174"
       autocomplete="off">
 
-
-    <button
-
-      id="searchButton"
-
-      onclick="searchProduct()">
-
+    <button onclick="searchSKU()">
       Search
-
     </button>
 
   </div>
 
-
-  <!-- RESULT -->
 
   <div id="result"></div>
 
@@ -482,164 +412,343 @@ td:first-child{
 <script>
 
 
-// ==================================================
-// GOOGLE APPS SCRIPT API
-// ==================================================
+// ========================================
+// APPS SCRIPT API
+// ========================================
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycbymi4BRA8DeG-7dxGFTBXx1kqI8ydXsokKwqqaXZKGVAAmK5Z9tDIk7wnOz0nOyWWtf/exec";
 
 
-// ==================================================
-// HTML SECURITY
-// ==================================================
+// ========================================
+// SEARCH
+// ========================================
 
-function escapeHtml(value){
+function searchSKU() {
 
-  return String(value ?? "")
-
-    .replace(/&/g,"&amp;")
-
-    .replace(/</g,"&lt;")
-
-    .replace(/>/g,"&gt;")
-
-    .replace(/"/g,"&quot;")
-
-    .replace(/'/g,"&#039;");
-
-}
-
-
-function escapeAttribute(value){
-
-  return escapeHtml(value);
-
-}
-
-
-// ==================================================
-// SEARCH PRODUCT
-// ==================================================
-
-function searchProduct(){
-
-  const input =
-    document.getElementById("sku");
+  const sku =
+    document
+      .getElementById("skuInput")
+      .value
+      .trim();
 
 
   const result =
     document.getElementById("result");
 
 
-  const button =
-    document.getElementById("searchButton");
+  if (!sku) {
 
-
-  const sku =
-    input.value
-      .trim()
-      .toUpperCase();
-
-
-  if(!sku){
-
-    alert("Enter SKU");
-
-    input.focus();
+    result.innerHTML =
+      '<div class="error">Please enter SKU.</div>';
 
     return;
 
   }
 
 
-  // Loading
   result.innerHTML =
-    "<div class='loading'>Searching...</div>";
+    '<div class="loading">Searching...</div>';
 
 
-  button.disabled = true;
-
-  button.textContent =
-    "Searching...";
-
-
-  // JSONP callback
   const callbackName =
     "furniselanCallback_" +
     Date.now();
 
 
-  const script =
-    document.createElement("script");
-
-
-  // Cleanup
-  const cleanup = () => {
-
-    button.disabled = false;
-
-    button.textContent =
-      "Search";
-
-
-    try{
-
-      delete window[callbackName];
-
-    }
-
-    catch(e){}
-
-
-    if(script.parentNode){
-
-      script.parentNode
-        .removeChild(script);
-
-    }
-
-  };
-
-
-  // Callback
   window[callbackName] =
-    function(data){
+    function(data) {
 
-      try{
+      try {
 
-        showResult(data);
+        if (!data || !data.found) {
 
-      }
+          result.innerHTML =
+            '<div class="error">SKU not found.</div>';
 
-      finally{
+          return;
 
-        cleanup();
+        }
+
+
+        // ==================================
+        // IMAGE
+        // ==================================
+
+        const image =
+          data.image ||
+          "";
+
+
+        // ==================================
+        // SELLING PRICE
+        // ==================================
+
+        let sellingPrice =
+          data.selling || "";
+
+
+        if (
+          sellingPrice !== "" &&
+          !isNaN(Number(sellingPrice))
+        ) {
+
+          sellingPrice =
+            "₹ " +
+            Number(sellingPrice)
+              .toLocaleString("en-IN", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              });
+
+        }
+
+
+        // ==================================
+        // SIZE
+        // ==================================
+
+        const size =
+          [
+            data.w,
+            data.d,
+            data.h
+          ]
+          .filter(v => v !== "" && v !== null)
+          .join(" × ") +
+          " inch";
+
+
+        // ==================================
+        // DETAIL FUNCTION
+        // ==================================
+
+        function stockWithDetail(
+          stock,
+          detail
+        ) {
+
+          let html =
+            '<span class="stock-number">' +
+            Number(stock || 0) +
+            '</span>';
+
+
+          if (
+            detail &&
+            String(detail).trim() !== ""
+          ) {
+
+            html +=
+              '<span class="stock-detail">— ' +
+              escapeHTML(
+                String(detail).trim()
+              ) +
+              '</span>';
+
+          }
+
+
+          return html;
+
+        }
+
+
+        // ==================================
+        // DISPLAY
+        // ==================================
+
+        result.innerHTML = `
+
+          <div class="product-area">
+
+            <div>
+
+              <img
+                class="product-image"
+                src="${escapeAttribute(image)}"
+                alt="${escapeAttribute(data.name || "")}">
+
+            </div>
+
+
+            <div>
+
+              <table class="info-table">
+
+                <tr>
+                  <td>SKU</td>
+                  <td>${escapeHTML(data.sku || "")}</td>
+                </tr>
+
+
+                <tr>
+                  <td>Name</td>
+                  <td>${escapeHTML(data.name || "")}</td>
+                </tr>
+
+
+                <tr>
+                  <td>Size</td>
+                  <td>${escapeHTML(size)}</td>
+                </tr>
+
+
+                <tr>
+                  <td>Color</td>
+                  <td>${escapeHTML(data.color || "")}</td>
+                </tr>
+
+
+                <tr>
+                  <td>Material</td>
+                  <td>${escapeHTML(data.material || "")}</td>
+                </tr>
+
+
+                <tr>
+                  <td>Selling Price</td>
+                  <td>${escapeHTML(sellingPrice)}</td>
+                </tr>
+
+              </table>
+
+
+              <div class="stock-title">
+                Warehouse Stock
+              </div>
+
+
+              <table class="stock-table">
+
+                <tr>
+
+                  <td>
+                    Warehouse-9
+                  </td>
+
+                  <td>
+                    ${stockWithDetail(
+                      data.warehouse9Stock,
+                      data.warehouse9Detail
+                    )}
+                  </td>
+
+                </tr>
+
+
+                <tr>
+
+                  <td>
+                    Mumbai
+                  </td>
+
+                  <td>
+                    <span class="stock-number">
+                      ${Number(data.mumbaiStock || 0)}
+                    </span>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+
+                  <td>
+                    Bangalore
+                  </td>
+
+                  <td>
+                    <span class="stock-number">
+                      ${Number(data.bangaloreStock || 0)}
+                    </span>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+
+                  <td>
+                    Factory No-6
+                  </td>
+
+                  <td>
+                    ${stockWithDetail(
+                      data.factoryStock,
+                      data.factoryDetail
+                    )}
+                  </td>
+
+                </tr>
+
+
+                <tr class="total-row">
+
+                  <td>
+                    Total Stock
+                  </td>
+
+                  <td>
+                    ${Number(data.totalStock || 0)}
+                  </td>
+
+                </tr>
+
+              </table>
+
+            </div>
+
+          </div>
+
+        `;
+
+
+      } finally {
+
+        delete window[callbackName];
+
+        const script =
+          document.getElementById(callbackName);
+
+        if (script) {
+          script.remove();
+        }
 
       }
 
     };
 
 
-  // API URL
+  // ==================================
+  // JSONP SCRIPT
+  // ==================================
+
+  const script =
+    document.createElement("script");
+
+
+  script.id =
+    callbackName;
+
+
   script.src =
     API_URL +
     "?sku=" +
     encodeURIComponent(sku) +
     "&callback=" +
-    encodeURIComponent(callbackName);
+    callbackName;
 
 
-  // API error
   script.onerror =
-    function(){
+    function() {
 
       result.innerHTML =
-        "<div class='error'>" +
-        "Unable to connect to server." +
-        "</div>";
+        '<div class="error">Unable to connect to stock server.</div>';
 
-      cleanup();
+      delete window[callbackName];
+
+      script.remove();
 
     };
 
@@ -649,363 +758,48 @@ function searchProduct(){
 }
 
 
-// ==================================================
-// SHOW RESULT
-// ==================================================
-
-function showResult(data){
-
-  const result =
-    document.getElementById("result");
-
-
-  if(!data){
-
-    result.innerHTML =
-      "<div class='error'>" +
-      "No response from server." +
-      "</div>";
-
-    return;
-
-  }
-
-
-  if(data.error){
-
-    result.innerHTML =
-      "<div class='error'>" +
-      escapeHtml(data.error) +
-      "</div>";
-
-    return;
-
-  }
-
-
-  if(!data.found){
-
-    result.innerHTML =
-      "<div class='error'>" +
-      "Product Not Found" +
-      "</div>";
-
-    return;
-
-  }
-
-
-  // ==================================================
-  // STOCK VALUES
-  // ==================================================
-
-  const warehouse9 =
-    Number(data.warehouse9Stock) || 0;
-
-
-  const mumbai =
-    Number(data.mumbaiStock) || 0;
-
-
-  const bangalore =
-    Number(data.bangaloreStock) || 0;
-
-
-  const factory =
-    Number(data.factoryStock) || 0;
-
-
-  const total =
-    Number(data.totalStock) || 0;
-
-
-  // ==================================================
-  // PRODUCT RESULT
-  // ==================================================
-
-  result.innerHTML = `
-
-  <div class="product">
-
-
-    <!-- PRODUCT IMAGE -->
-
-    <div>
-
-      <img
-
-        class="product-image"
-
-        src="${escapeAttribute(data.image)}"
-
-        alt="${escapeAttribute(
-          data.name ||
-          data.sku ||
-          "Furniselan Product"
-        )}"
-
-        onerror="
-          this.src='https://via.placeholder.com/300x300?text=No+Image'
-        ">
-
-    </div>
-
-
-    <!-- PRODUCT INFORMATION -->
-
-    <div class="info">
-
-
-      <table>
-
-
-        <tr>
-
-          <td>
-            SKU
-          </td>
-
-          <td>
-            ${escapeHtml(data.sku)}
-          </td>
-
-        </tr>
-
-
-        <tr>
-
-          <td>
-            Name
-          </td>
-
-          <td>
-            ${escapeHtml(data.name)}
-          </td>
-
-        </tr>
-
-
-        <tr>
-
-          <td>
-            Size
-          </td>
-
-          <td>
-
-            ${escapeHtml(data.w)}
-            ×
-            ${escapeHtml(data.d)}
-            ×
-            ${escapeHtml(data.h)}
-            inch
-
-          </td>
-
-        </tr>
-
-
-        <tr>
-
-          <td>
-            Color
-          </td>
-
-          <td>
-            ${escapeHtml(data.color)}
-          </td>
-
-        </tr>
-
-
-        <tr>
-
-          <td>
-            Material
-          </td>
-
-          <td>
-            ${escapeHtml(data.material)}
-          </td>
-
-        </tr>
-
-
-        <tr>
-
-          <td>
-            Selling Price
-          </td>
-
-          <td>
-
-            ₹ ${Number(data.selling || 0)
-              .toLocaleString(
-                "en-IN",
-                {
-                  minimumFractionDigits:2,
-                  maximumFractionDigits:2
-                }
-              )}
-
-          </td>
-
-        </tr>
-
-
-      </table>
-
-
-      <!-- =========================
-           WAREHOUSE STOCK
-      ========================== -->
-
-      <div class="stock">
-
-
-        <h3>
-          Warehouse Stock
-        </h3>
-
-
-        <table>
-
-
-          <!-- WAREHOUSE-9 -->
-
-          <tr>
-
-            <td>
-              Warehouse-9
-            </td>
-
-            <td class="${
-              warehouse9 > 0
-              ? "stock-number"
-              : "stock-zero"
-            }">
-
-              ${warehouse9}
-
-            </td>
-
-          </tr>
-
-
-          <!-- MUMBAI -->
-
-          <tr>
-
-            <td>
-              Mumbai
-            </td>
-
-            <td class="${
-              mumbai > 0
-              ? "stock-number"
-              : "stock-zero"
-            }">
-
-              ${mumbai}
-
-            </td>
-
-          </tr>
-
-
-          <!-- BANGALORE -->
-
-          <tr>
-
-            <td>
-              Bangalore
-            </td>
-
-            <td class="${
-              bangalore > 0
-              ? "stock-number"
-              : "stock-zero"
-            }">
-
-              ${bangalore}
-
-            </td>
-
-          </tr>
-
-
-          <!-- FACTORY NO-6 -->
-
-          <tr>
-
-            <td>
-              Factory No-6
-            </td>
-
-            <td class="${
-              factory > 0
-              ? "stock-number"
-              : "stock-zero"
-            }">
-
-              ${factory}
-
-            </td>
-
-          </tr>
-
-
-          <!-- TOTAL -->
-
-          <tr class="total">
-
-            <td>
-              Total Stock
-            </td>
-
-            <td>
-              ${total}
-            </td>
-
-          </tr>
-
-
-        </table>
-
-
-      </div>
-
-
-    </div>
-
-
-  </div>
-
-  `;
-
-}
-
-
-// ==================================================
-// ENTER KEY SEARCH
-// ==================================================
+// ========================================
+// ENTER KEY
+// ========================================
 
 document
-  .getElementById("sku")
+  .getElementById("skuInput")
   .addEventListener(
     "keydown",
-    function(event){
+    function(event) {
 
-      if(event.key === "Enter"){
+      if (event.key === "Enter") {
 
-        event.preventDefault();
-
-        searchProduct();
+        searchSKU();
 
       }
 
     }
   );
+
+
+// ========================================
+// HTML SECURITY
+// ========================================
+
+function escapeHTML(value) {
+
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+}
+
+
+function escapeAttribute(value) {
+
+  return escapeHTML(value);
+
+}
+
 
 </script>
 
