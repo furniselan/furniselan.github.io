@@ -1,392 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Furniselan Stock Search</title>
 
-
 <style>
-
 * {
   box-sizing: border-box;
 }
 
-
 body {
-
   margin: 0;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
+  font-family: Arial, Helvetica, sans-serif;
   background: #f3f3f3;
-
   color: #111;
-
 }
 
-
+/* MAIN CONTAINER */
 .container {
-
   width: 92%;
-
-  max-width: 1050px;
-
-  margin: 0 auto;
-
-  background: white;
-
+  max-width: 1180px;
+  margin: 10px auto;
+  background: #fff;
   min-height: 100vh;
-
-  padding: 0 28px 28px;
-
-  box-shadow:
-    0 0 18px rgba(0,0,0,0.12);
-
+  padding: 25px 32px 55px;
+  border-radius: 14px;
+  box-shadow: 0 0 18px rgba(0,0,0,0.12);
 }
 
-
+/* LOGO */
 .logo {
-
   text-align: center;
-
-  padding-top: 0;
-
-  margin-bottom: 20px;
-
+  margin-bottom: 14px;
 }
-
 
 .logo img {
-
-  width: 180px;
-
+  width: 205px;
   max-width: 60%;
-
+  display: inline-block;
 }
 
-
+/* DESCRIPTION */
 .description {
-
   text-align: center;
-
   font-size: 18px;
-
-  color: #555;
-
-  margin-bottom: 30px;
-
+  color: #4d4d4d;
+  margin-bottom: 24px;
+  line-height: 1.4;
 }
 
-
+/* SEARCH */
 .search-box {
-
   display: flex;
-
-  gap: 12px;
-
-  margin-bottom: 28px;
-
+  gap: 14px;
+  margin-bottom: 24px;
+  width: 100%;
 }
-
 
 .search-box input {
-
   flex: 1;
-
-  height: 56px;
-
+  height: 64px;
   border: 1px solid #009f96;
-
   border-radius: 10px;
-
-  padding: 0 16px;
-
-  font-size: 20px;
-
+  padding: 0 18px;
+  font-size: 21px;
   outline: none;
-
+  color: #111;
 }
 
+.search-box input:focus {
+  border-color: #008f87;
+  box-shadow: 0 0 0 2px rgba(0,159,150,0.10);
+}
 
 .search-box button {
-
-  width: 120px;
-
+  width: 135px;
+  height: 64px;
   border: none;
-
   border-radius: 10px;
-
-  background: #009d94;
-
+  background: #009f96;
   color: white;
-
   font-size: 18px;
-
   font-weight: bold;
-
   cursor: pointer;
-
 }
-
 
 .search-box button:hover {
-
   background: #008b83;
-
 }
 
-
+/* PRODUCT AREA */
 .product-area {
-
   display: grid;
-
-  grid-template-columns: 315px 1fr;
-
-  gap: 30px;
-
+  grid-template-columns: 420px 1fr;
+  gap: 36px;
   align-items: start;
-
 }
 
-
+/* PRODUCT IMAGE */
 .product-image {
-
-  width: 315px;
-
-  height: 260px;
-
-  object-fit: cover;
-
-  border-radius: 12px;
-
-  display: block;
-
-}
-
-
-.info-table {
-
   width: 100%;
-
-  border-collapse: collapse;
-
-  font-size: 18px;
-
+  max-width: 420px;
+  height: 295px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
 }
 
+/* DETAILS TABLE */
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 18px;
+}
 
 .info-table td {
-
-  border: 1px solid #ddd;
-
-  padding: 12px;
-
+  border: 1px solid #d8d8d8;
+  padding: 14px;
+  height: 52px;
+  vertical-align: middle;
 }
-
 
 .info-table td:first-child {
-
-  width: 205px;
-
+  width: 220px;
   font-weight: bold;
-
   background: #fafafa;
-
 }
 
-
+/* STOCK TITLE */
 .stock-title {
-
-  font-size: 24px;
-
+  font-size: 26px;
   font-weight: bold;
-
-  margin:
-
-    20px 0 10px;
-
+  margin: 20px 0 10px;
 }
 
-
+/* STOCK TABLE */
 .stock-table {
-
   width: 100%;
-
   border-collapse: collapse;
-
   font-size: 18px;
-
 }
-
 
 .stock-table td {
-
-  border: 1px solid #ddd;
-
-  padding: 12px;
-
+  border: 1px solid #d8d8d8;
+  padding: 14px;
+  height: 52px;
+  vertical-align: middle;
 }
-
 
 .stock-table td:first-child {
-
-  width: 205px;
-
+  width: 220px;
   font-weight: bold;
-
   background: #fafafa;
-
 }
 
-
+/* GREEN STOCK NUMBERS */
 .stock-number {
-
   color: #00a63c;
-
   font-weight: bold;
-
 }
 
-
+/* EXTRA DETAIL */
 .stock-detail {
-
   color: #333;
-
   font-weight: normal;
-
   margin-left: 8px;
-
 }
 
-
+/* TOTAL STOCK */
 .total-row td {
-
   background: #009f96 !important;
-
   color: white;
-
-  font-size: 23px;
-
+  font-size: 25px;
   font-weight: bold;
-
+  height: 58px;
 }
 
-
+/* ERROR */
 .error {
-
   text-align: center;
-
   color: #d00000;
-
   font-size: 18px;
-
   padding: 20px;
-
 }
 
-
+/* LOADING */
 .loading {
-
   text-align: center;
-
   font-size: 18px;
-
   padding: 20px;
-
 }
 
-
-@media (max-width: 750px) {
+/* MOBILE */
+@media (max-width: 850px) {
 
   .container {
-
     width: 100%;
-
-    padding: 0 15px 20px;
-
+    margin: 0;
+    padding: 18px 15px 30px;
+    border-radius: 0;
   }
 
-
-  .product-area {
-
-    grid-template-columns: 1fr;
-
+  .logo img {
+    width: 180px;
   }
 
-
-  .product-image {
-
-    width: 100%;
-
-    max-width: 315px;
-
-    margin: auto;
-
+  .description {
+    font-size: 15px;
+    margin-bottom: 20px;
   }
-
 
   .search-box {
-
     gap: 8px;
-
   }
 
+  .search-box input {
+    height: 54px;
+    font-size: 18px;
+  }
 
   .search-box button {
-
-    width: 100px;
-
+    width: 105px;
+    height: 54px;
+    font-size: 16px;
   }
 
+  .product-area {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .product-image {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    aspect-ratio: 420 / 295;
+    margin: auto;
+  }
+
+  .info-table,
+  .stock-table {
+    font-size: 16px;
+  }
+
+  .info-table td,
+  .stock-table td {
+    padding: 11px;
+  }
 
   .info-table td:first-child,
   .stock-table td:first-child {
-
     width: 38%;
-
   }
 
+  .stock-title {
+    font-size: 22px;
+  }
+
+  .total-row td {
+    font-size: 21px;
+  }
 }
-
-
 </style>
-
 </head>
-
 
 <body>
 
-
 <div class="container">
 
-
+  <!-- LOGO -->
   <div class="logo">
-
     <img
       src="https://furniselan.com/wp-content/uploads/2025/01/furniselan-logo.png"
       alt="Furniselan">
-
   </div>
 
-
+  <!-- DESCRIPTION -->
   <div class="description">
-
     Search Furniselan product SKU and check
     Warehouse-9, Mumbai, Bangalore and Factory No-6
     stock availability.
-
   </div>
 
-
+  <!-- SEARCH -->
   <div class="search-box">
 
     <input
@@ -402,27 +300,25 @@ body {
 
   </div>
 
-
+  <!-- RESULT -->
   <div id="result"></div>
-
 
 </div>
 
 
 <script>
 
-
-// ========================================
-// APPS SCRIPT API
-// ========================================
+/* ========================================
+   GOOGLE APPS SCRIPT API
+======================================== */
 
 const API_URL =
-"https://script.google.com/macros/s/AKfycbymi4BRA8DeG-7dxGFTBXx1kqI8ydXsokKwqqaXZKGVAAmK5Z9tDIk7wnOz0nOyWWtf/exec";
+"https://script.google.com/macros/s/AKfycbymi4BRA8DeG-7dxGFTBXx1kqI8ydXsokKwqqaXZKGAmK5Z9tDIk7wnOz0nOyWWtf/exec";
 
 
-// ========================================
-// SEARCH
-// ========================================
+/* ========================================
+   SEARCH SKU
+======================================== */
 
 function searchSKU() {
 
@@ -431,7 +327,6 @@ function searchSKU() {
       .getElementById("skuInput")
       .value
       .trim();
-
 
   const result =
     document.getElementById("result");
@@ -443,7 +338,6 @@ function searchSKU() {
       '<div class="error">Please enter SKU.</div>';
 
     return;
-
   }
 
 
@@ -461,28 +355,28 @@ function searchSKU() {
 
       try {
 
+        /* SKU NOT FOUND */
+
         if (!data || !data.found) {
 
           result.innerHTML =
             '<div class="error">SKU not found.</div>';
 
           return;
-
         }
 
 
-        // ==================================
-        // IMAGE
-        // ==================================
+        /* ==================================
+           IMAGE
+        ================================== */
 
         const image =
-          data.image ||
-          "";
+          data.image || "";
 
 
-        // ==================================
-        // SELLING PRICE
-        // ==================================
+        /* ==================================
+           SELLING PRICE
+        ================================== */
 
         let sellingPrice =
           data.selling || "";
@@ -500,33 +394,35 @@ function searchSKU() {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
               });
-
         }
 
 
-        // ==================================
-        // SIZE
-        // ==================================
+        /* ==================================
+           SIZE
+        ================================== */
+
+        let sizeParts = [
+          data.w,
+          data.d,
+          data.h
+        ].filter(
+          v => v !== "" &&
+               v !== null &&
+               v !== undefined
+        );
+
 
         const size =
-          [
-            data.w,
-            data.d,
-            data.h
-          ]
-          .filter(v => v !== "" && v !== null)
-          .join(" × ") +
-          " inch";
+          sizeParts.length
+            ? sizeParts.join(" × ") + " inch"
+            : "";
 
 
-        // ==================================
-        // DETAIL FUNCTION
-        // ==================================
+        /* ==================================
+           STOCK DETAIL
+        ================================== */
 
-        function stockWithDetail(
-          stock,
-          detail
-        ) {
+        function stockWithDetail(stock, detail) {
 
           let html =
             '<span class="stock-number">' +
@@ -545,81 +441,104 @@ function searchSKU() {
                 String(detail).trim()
               ) +
               '</span>';
-
           }
 
 
           return html;
-
         }
 
 
-        // ==================================
-        // DISPLAY
-        // ==================================
+        /* ==================================
+           DISPLAY
+        ================================== */
 
         result.innerHTML = `
 
           <div class="product-area">
+
+            <!-- PRODUCT IMAGE -->
 
             <div>
 
               <img
                 class="product-image"
                 src="${escapeAttribute(image)}"
-                alt="${escapeAttribute(data.name || "")}">
+                alt="${escapeAttribute(data.name || "")}"
+                onerror="this.style.visibility='hidden';">
 
             </div>
 
 
+            <!-- RIGHT SIDE -->
+
             <div>
+
+              <!-- PRODUCT DETAILS -->
 
               <table class="info-table">
 
                 <tr>
                   <td>SKU</td>
-                  <td>${escapeHTML(data.sku || "")}</td>
+                  <td>
+                    ${escapeHTML(data.sku || "")}
+                  </td>
                 </tr>
 
 
                 <tr>
                   <td>Name</td>
-                  <td>${escapeHTML(data.name || "")}</td>
+                  <td>
+                    ${escapeHTML(data.name || "")}
+                  </td>
                 </tr>
 
 
                 <tr>
                   <td>Size</td>
-                  <td>${escapeHTML(size)}</td>
+                  <td>
+                    ${escapeHTML(size)}
+                  </td>
                 </tr>
 
 
                 <tr>
                   <td>Color</td>
-                  <td>${escapeHTML(data.color || "")}</td>
+                  <td>
+                    ${escapeHTML(data.color || "")}
+                  </td>
                 </tr>
 
 
                 <tr>
                   <td>Material</td>
-                  <td>${escapeHTML(data.material || "")}</td>
+                  <td>
+                    ${escapeHTML(data.material || "")}
+                  </td>
                 </tr>
 
 
                 <tr>
                   <td>Selling Price</td>
-                  <td>${escapeHTML(sellingPrice)}</td>
+                  <td>
+                    ${escapeHTML(sellingPrice)}
+                  </td>
                 </tr>
 
               </table>
 
+
+              <!-- WAREHOUSE TITLE -->
 
               <div class="stock-title">
                 Warehouse Stock
               </div>
 
 
+              <!-- STOCK TABLE -->
+
               <table class="stock-table">
+
+                <!-- WAREHOUSE 9 -->
 
                 <tr>
 
@@ -637,6 +556,8 @@ function searchSKU() {
                 </tr>
 
 
+                <!-- MUMBAI -->
+
                 <tr>
 
                   <td>
@@ -651,6 +572,8 @@ function searchSKU() {
 
                 </tr>
 
+
+                <!-- BANGALORE -->
 
                 <tr>
 
@@ -667,6 +590,8 @@ function searchSKU() {
                 </tr>
 
 
+                <!-- FACTORY NO-6 -->
+
                 <tr>
 
                   <td>
@@ -682,6 +607,8 @@ function searchSKU() {
 
                 </tr>
 
+
+                <!-- TOTAL -->
 
                 <tr class="total-row">
 
@@ -703,16 +630,17 @@ function searchSKU() {
 
         `;
 
+      }
 
-      } finally {
+      finally {
 
         delete window[callbackName];
 
-        const script =
+        const oldScript =
           document.getElementById(callbackName);
 
-        if (script) {
-          script.remove();
+        if (oldScript) {
+          oldScript.remove();
         }
 
       }
@@ -720,9 +648,9 @@ function searchSKU() {
     };
 
 
-  // ==================================
-  // JSONP SCRIPT
-  // ==================================
+  /* ==================================
+     JSONP
+  ================================== */
 
   const script =
     document.createElement("script");
@@ -744,7 +672,9 @@ function searchSKU() {
     function() {
 
       result.innerHTML =
-        '<div class="error">Unable to connect to stock server.</div>';
+        '<div class="error">' +
+        'Unable to connect to stock server.' +
+        '</div>';
 
       delete window[callbackName];
 
@@ -758,9 +688,9 @@ function searchSKU() {
 }
 
 
-// ========================================
-// ENTER KEY
-// ========================================
+/* ========================================
+   ENTER KEY
+======================================== */
 
 document
   .getElementById("skuInput")
@@ -769,18 +699,16 @@ document
     function(event) {
 
       if (event.key === "Enter") {
-
         searchSKU();
-
       }
 
     }
   );
 
 
-// ========================================
-// HTML SECURITY
-// ========================================
+/* ========================================
+   HTML SECURITY
+======================================== */
 
 function escapeHTML(value) {
 
@@ -795,15 +723,22 @@ function escapeHTML(value) {
 
 
 function escapeAttribute(value) {
-
   return escapeHTML(value);
-
 }
 
 
+/* ========================================
+   LOAD VAP-2174 AUTOMATICALLY
+======================================== */
+
+window.addEventListener(
+  "load",
+  function() {
+    searchSKU();
+  }
+);
+
 </script>
 
-
 </body>
-
 </html>
